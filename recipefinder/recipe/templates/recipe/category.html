@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recipe/recipe_styles.css' %}">
+    <title>Recipe-finder</title>
+</head>
+<body>
+    
+    {% include 'recipe/nav-bar.html'%}
+    <div class="category">
+    <h1>{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+    <ul>
+    {% for subcategory in subcategories %}
+    <li><a href="{% url 'subcategory' subcategory.id %}" type="button" id="button2">{{ subcategory.name }}</a></li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}" type="button" id="button1">Back to Home</a>
+    </div>
+
+</body>
+</html>
